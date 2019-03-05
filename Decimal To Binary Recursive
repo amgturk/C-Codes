@@ -4,7 +4,7 @@
   void toBinary(int decimal) {
 
     if (decimal < 2)
-      std::cout << 1;
+      std::cout << decimal;
     else {
       toBinary(decimal / 2);
       std::cout << decimal % 2;

@@ -1,0 +1,25 @@
+// Simple decimal to any base converter using recursive function call
+#include <iostream>
+
+  void decimalToBase(int decimal,int base) {
+
+    if (decimal >= 0 && base > 0) {
+
+      if (decimal < base)
+        std::cout << decimal;
+
+      else {
+        decimalToBase(decimal / base,base);
+        std::cout << decimal % base;
+      }
+
+    }
+
+  }
+
+int main() {
+
+  // call for decimal 8, which results 1000 in binary
+  decimalToBase(8,2);
+  return 0;
+}

@@ -1,0 +1,19 @@
+// Simple decimal to binary converter using recursive function call
+#include <iostream>
+
+  void toBinary(int decimal) {
+
+    if (decimal < 2)
+      std::cout << 1;
+    else {
+      toBinary(decimal / 2);
+      std::cout << decimal % 2;
+    }
+  }
+
+int main() {
+
+  // call for decimal 8, which results 1000 in binary
+  toBinary(8);
+  return 0;
+}

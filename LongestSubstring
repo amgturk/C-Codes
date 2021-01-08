@@ -1,0 +1,52 @@
+#include <iostream>
+#include <bits/stdc++.h>
+
+using namespace std;
+
+vector<string> longestSubstring(string str){
+int maxlenght=0;
+vector<string> substr;
+string substring="";
+bool foundd=false;
+int found;
+
+for(int i=0;i<str.length();i++){
+    found=substring.find(str[i]);
+    if(found==string::npos){
+        substring+=str[i];
+    }else{
+        if(substring.length() > maxlenght){
+            maxlenght=substring.length();
+            substr.clear();
+            substr.push_back(substring);
+        }else if(substring.length() == maxlenght){
+            foundd=searchString(substr,substring);
+            if(!foundd){
+              substr.push_back(substring);  
+            }
+        }
+        substring=substring.substr(found+1,substring.length()-found-1);
+        substring+=str[i];
+    }
+    
+    if(i==str.length()-1 && substring.length()>maxlenght){
+        substr.clear();
+        substr.push_back(substring);
+    }else if(i==str.length()-1 && substring.length()==maxlenght && !searchString(substr,substring)){
+        substr.push_back(substring);
+    }
+}
+   return substr; 
+}
+
+int main(){
+    string str="GEEKSFORGEEKS";
+    vector<string> strm=longestSubstring(str);
+    if(strm.size()!=0){
+        for(auto &strr:strm){
+            cout<<strr<<" ";
+        }
+    }else
+    cout<<"No substring available!"<<endl;
+   return 0;
+  } 

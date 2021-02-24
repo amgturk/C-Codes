@@ -3,6 +3,15 @@
 
 using namespace std;
 
+bool searchString(vector<string> substr,string substring){
+    std:: vector<string> :: iterator it;
+    it=std::find(substr.begin(),substr.end(),substring);
+    if(it== substr.end())
+        return false;
+    else
+        return true;
+}
+
 vector<string> longestSubstring(string str){
 int maxlenght=0;
 vector<string> substr;

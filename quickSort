@@ -1,0 +1,36 @@
+#include <iostream>
+#include <bits/stdc++.h>
+
+using namespace std;
+
+void quickSort(vector<int> & v,int beg,int end){
+    int pivot=v[end];
+    int pivotIndex=end;
+    for(int i=beg;i<pivotIndex;i++){
+
+        if(v[i]>pivot){
+            v.insert(v.begin()+pivotIndex+1,v[i]);
+            v.erase(v.begin()+i);
+            i--;
+        }
+        auto it=std::find(v.begin(),v.end(),pivot);
+        pivotIndex=it-v.begin();
+    }
+
+    if(!(pivotIndex <=beg+1))
+        quickSort(v,beg,pivotIndex-1);
+    if(!(pivotIndex >=end-1))
+        quickSort(v,pivotIndex+1,end);
+    
+}
+
+int main(){
+    
+    vector<int> vc={39,28,10,3,7,20,11,1,5,78}; 
+    quickSort(vc,0,vc.size()-1);
+    
+    for(auto & elem:vc)
+        cout<<elem<<" ";
+        
+   return 0;
+  } 
